@@ -23,8 +23,9 @@
 #ifndef __WIRELESSGAMINGRECEIVER_H__
 #define __WIRELESSGAMINGRECEIVER_H__
 
-#include <IOKit/usb/IOUSBDevice.h>
-#include <IOKit/usb/IOUSBInterface.h>
+#include <IOKit/usb/IOUSBHostDevice.h>
+#include <IOKit/usb/IOUSBHostInterface.h>
+#include <IOKit/usb/IOUSBHostPipe.h>
 
 // This value is defined by the hardware and fixed
 #define WIRELESS_CONNECTIONS        4
@@ -34,12 +35,12 @@ class WirelessDevice;
 typedef struct WIRELESS_CONNECTION
 {
     // Controller
-    IOUSBInterface *controller;
-    IOUSBPipe *controllerIn, *controllerOut;
+    IOUSBHostInterface *controller;
+    IOUSBHostPipe *controllerIn, *controllerOut;
 
     // Mystery
-    IOUSBInterface *other;
-    IOUSBPipe *otherIn, *otherOut;
+    IOUSBHostInterface *other;
+    IOUSBHostPipe *otherIn, *otherOut;
 
     // Runtime data
     OSArray *inputArray;
@@ -67,7 +68,7 @@ private:
     bool QueueWrite(int index, const void *bytes, UInt32 length);
 
 private:
-    IOUSBDevice *device;
+    IOUSBHostDevice *device;
     WIRELESS_CONNECTION connections[WIRELESS_CONNECTIONS];
     int connectionCount;
 

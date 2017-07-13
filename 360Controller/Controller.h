@@ -34,7 +34,7 @@ private:
     OSString* getDeviceString(UInt8 index,const char *def=NULL) const;
 
 public:
-    virtual bool start(IOService *provider);
+    virtual bool start(IOService *provider) override;
 
     virtual IOReturn setProperties(OSObject *properties);
 

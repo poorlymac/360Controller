@@ -1,30 +1,33 @@
 /*
-    MICE Xbox 360 Controller driver for Mac OS X
-    Copyright (C) 2006-2013 Colin Munro
+ MICE Xbox 360 Controller driver for Mac OS X
+ Copyright (C) 2006-2013 Colin Munro
+ 
+ WirelessGamingReceiver.cpp - main source of the wireless receiver driver
+ 
+ This file is part of Xbox360Controller.
+ 
+ Xbox360Controller is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ 
+ Xbox360Controller is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License
+ along with Foobar; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
 
-    WirelessGamingReceiver.cpp - main source of the wireless receiver driver
-
-    This file is part of Xbox360Controller.
-
-    Xbox360Controller is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-
-    Xbox360Controller is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Foobar; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+#include <IOKit/usb/IOUSBHostInterface.h>
+#include <IOKit/usb/USB.h>
 #include "WirelessGamingReceiver.h"
 #include "WirelessDevice.h"
 #include "devices.h"
 
-//#define PROTOCOL_DEBUG
+#define PROTOCOL_DEBUG
 
 OSDefineMetaClassAndStructors(WirelessGamingReceiver, IOService)
 
@@ -36,10 +39,10 @@ typedef struct WGRREAD
 } WGRREAD;
 
 // Get maximum packet size for a pipe
-static UInt32 GetMaxPacketSize(IOUSBPipe *pipe)
+static UInt32 GetMaxPacketSize(IOUSBHostPipe *pipe)
 {
-    const IOUSBEndpointDescriptor *ed = pipe->GetEndpointDescriptor();
-
+    const EndpointDescriptor *ed = pipe->getEndpointDescriptor();
+    
     if (ed == NULL) return 0;
     else return ed->wMaxPacketSize;
 }
@@ -47,54 +50,57 @@ static UInt32 GetMaxPacketSize(IOUSBPipe *pipe)
 // Start device
 bool WirelessGamingReceiver::start(IOService *provider)
 {
-    const IOUSBConfigurationDescriptor *cd;
+    const ConfigurationDescriptor *cd;
+    const EndpointDescriptor* ec;
     IOUSBFindInterfaceRequest interfaceRequest;
     IOUSBFindEndpointRequest pipeRequest;
-    IOUSBInterface *interface;
+    OSIterator* iterator;
+    IOUSBHostInterface *interface;
+    OSObject* candidate = NULL;
     int iConnection, iOther, i;
-
+    
     if (!IOService::start(provider))
     {
-        // IOLog("start - superclass failed\n");
+        IOLog("start - superclass failed\n");
         return false;
     }
-
-    device = OSDynamicCast(IOUSBDevice, provider);
+    
+    device = OSDynamicCast(IOUSBHostDevice, provider);
     if (device == NULL)
     {
-        // IOLog("start - invalid provider\n");
+        IOLog("start - invalid provider\n");
         goto fail;
     }
-
+    
     // Check for configurations
-    if (device->GetNumConfigurations() < 1)
+    if (device->getDeviceDescriptor()->bNumConfigurations < 1)
     {
         device = NULL;
-        // IOLog("start - device has no configurations!\n");
+        IOLog("start - device has no configurations!\n");
         goto fail;
     }
-
+    
     // Set configuration
-    cd = device->GetFullConfigurationDescriptor(0);
+    cd = device->getConfigurationDescriptor(0);
     if (cd == NULL)
     {
         device = NULL;
-        // IOLog("start - couldn't get configuration descriptor\n");
+        IOLog("start - couldn't get configuration descriptor\n");
         goto fail;
     }
-
+    
     if (!device->open(this))
     {
         device = NULL;
-        // IOLog("start - failed to open device\n");
+        IOLog("start - failed to open device\n");
         goto fail;
     }
-    if (device->SetConfiguration(this, cd->bConfigurationValue, true) != kIOReturnSuccess)
+    if (device->setConfiguration(cd->bConfigurationValue, true) != kIOReturnSuccess)
     {
-        // IOLog("start - unable to set configuration\n");
+		IOLog("start - unable to set configuration\n");
         goto fail;
     }
-
+    
     for (i = 0; i < WIRELESS_CONNECTIONS; i++)
     {
         connections[i].controller = NULL;
@@ -107,7 +113,7 @@ bool WirelessGamingReceiver::start(IOService *provider)
         connections[i].service = NULL;
         connections[i].controllerStarted = false;
     }
-
+    
     pipeRequest.interval = 0;
     pipeRequest.maxPacketSize = 0;
     pipeRequest.type = kUSBInterrupt;
@@ -118,94 +124,114 @@ bool WirelessGamingReceiver::start(IOService *provider)
     interface = NULL;
     iConnection = 0;
     iOther = 0;
-    while ((interface = device->FindNextInterface(interface, &interfaceRequest)) != NULL)
+    
+    iterator = device->getChildIterator(gIOServicePlane);
+    while(iterator != NULL && (candidate = iterator->getNextObject()) != NULL)
     {
-        switch (interface->GetInterfaceProtocol())
-        {
-            case 129:   // Controller
-                if (!interface->open(this))
-                {
-                    // IOLog("start: Failed to open control interface\n");
-                    goto fail;
+        interface = OSDynamicCast(IOUSBHostInterface, candidate);
+        if (interface) {
+            cd = interface->getConfigurationDescriptor();
+            const StandardUSB::InterfaceDescriptor* id = interface->getInterfaceDescriptor();
+            switch (id->bInterfaceProtocol)
+            {
+                case 129: {  // Controller
+                    if (!interface->open(this))
+                    {
+                        IOLog("start: Failed to open control interface\n");
+                        goto fail;
+                    }
+                    
+                    // Store the pipes
+                    ec = NULL;
+                    while((ec = StandardUSB::getNextEndpointDescriptor(cd, id, ec)) != NULL)
+                    //while((ec = StandardUSB::getNextAssociatedDescriptorWithType(getConfigurationDescriptor(), getInterfaceDescriptor(), endpointCandidate, kDescriptorTypeEndpoint)) != NULL)
+                    {
+                        uint8_t ed = StandardUSB::getEndpointDirection(ec);
+                        kprintf("%x\n", ed);
+                        if (ed == kUSBIn) {
+                            connections[iConnection].controllerIn = interface->copyPipe(StandardUSB::getEndpointAddress(ec));
+                        } else if (ed == kUSBOut) {
+                            connections[iConnection].controllerOut = interface->copyPipe(StandardUSB::getEndpointAddress(ec));
+                        }
+                    }
+                    if (connections[iConnection].controllerIn == NULL)
+                    {
+                        IOLog("start: Failed to open control input pipe\n");
+                        goto fail;
+                    }
+                    if (connections[iConnection].controllerOut == NULL)
+                    {
+                        IOLog("start: Failed to open control input pipe\n");
+                        goto fail;
+                    }
+                    
+                    iConnection++;
+                    break;
                 }
-                connections[iConnection].controller = interface;
-                pipeRequest.direction = kUSBIn;
-                connections[iConnection].controllerIn = interface->FindNextPipe(NULL, &pipeRequest);
-                if (connections[iConnection].controllerIn == NULL)
-                {
-                    // IOLog("start: Failed to open control input pipe\n");
-                    goto fail;
+                case 130: {  // It is a mystery
+                    if (!interface->open(this))
+                    {
+                        IOLog("start: Failed to open mystery interface\n");
+                        goto fail;
+                    }
+                    
+                    ec = NULL;
+                    while((ec = StandardUSB::getNextEndpointDescriptor(cd, id, ec)) != NULL)
+                    {
+                        uint8_t ed = StandardUSB::getEndpointDirection(ec);
+                       	kprintf("M: %x\n", ed);
+                        if (ed == kUSBIn) {
+                            connections[iOther].otherIn = interface->copyPipe(StandardUSB::getEndpointAddress(ec));
+                        } else if (ed == kUSBOut) {
+                            connections[iOther].otherOut = interface->copyPipe(StandardUSB::getEndpointAddress(ec));
+                        }
+                    }
+                    if (connections[iOther].otherIn == NULL)
+                    {
+                        IOLog("start: Failed to open mystery input pipe\n");
+                        goto fail;
+                    }
+                    if (connections[iOther].otherOut == NULL)
+                    {
+                        IOLog("start: Failed to open mystery input pipe\n");
+                        goto fail;
+                    }
+                    
+                    iOther++;
+                    break;
                 }
-                else
-                    connections[iConnection].controllerIn->retain();
-                pipeRequest.direction = kUSBOut;
-                connections[iConnection].controllerOut = interface->FindNextPipe(NULL, &pipeRequest);
-                if (connections[iConnection].controllerOut == NULL)
-                {
-                    // IOLog("start: Failed to open control output pipe\n");
-                    goto fail;
+                default: {
+                    IOLog("start: Ignoring interface (protocol)\n");//, interface->getInterfaceProtocol());
+                    break;
                 }
-                else
-                    connections[iConnection].controllerOut->retain();
-                iConnection++;
-                break;
-
-            case 130:   // It is a mystery
-                if (!interface->open(this))
-                {
-                    // IOLog("start: Failed to open mystery interface\n");
-                    goto fail;
-                }
-                connections[iOther].other = interface;
-                pipeRequest.direction = kUSBIn;
-                connections[iOther].otherIn = interface->FindNextPipe(NULL, &pipeRequest);
-                if (connections[iOther].otherIn == NULL)
-                {
-                    // IOLog("start: Failed to open mystery input pipe\n");
-                    goto fail;
-                }
-                else
-                    connections[iOther].otherIn->retain();
-                pipeRequest.direction = kUSBOut;
-                connections[iOther].otherOut = interface->FindNextPipe(NULL, &pipeRequest);
-                if (connections[iOther].otherOut == NULL)
-                {
-                    // IOLog("start: Failed to open mystery output pipe\n");
-                    goto fail;
-                }
-                else
-                    connections[iOther].otherOut->retain();
-                iOther++;
-                break;
-
-            default:
-                // IOLog("start: Ignoring interface (protocol %d)\n", interface->GetInterfaceProtocol());
-                break;
+            }
         }
+        
     }
-
+    OSSafeReleaseNULL(iterator);
+    
     if (iConnection != iOther)
         IOLog("start - interface mismatch?\n");
     connectionCount = iConnection;
-
+    
     for (i = 0; i < connectionCount; i++)
     {
         connections[i].inputArray = OSArray::withCapacity(5);
         if (connections[i].inputArray == NULL)
         {
-            // IOLog("start: Failed to allocate packet buffer %d\n", i);
+            IOLog("start: Failed to allocate packet buffer %d\n", i);
             goto fail;
         }
         if (!QueueRead(i))
         {
-            // IOLog("start: Failed to start read %d\n", i);
+            IOLog("start: Failed to start read %d\n", i);
             goto fail;
         }
     }
-
-    // IOLog("start: Transform and roll out (%d interfaces)\n", connectionCount);
+    
+    IOLog("start: Transform and roll out (%d interfaces)\n", connectionCount);
     return true;
-
+    
 fail:
     ReleaseAll();
     return false;
@@ -248,10 +274,10 @@ IOReturn WirelessGamingReceiver::message(UInt32 type,IOService *provider,void *a
 // Queue a read on a controller
 bool WirelessGamingReceiver::QueueRead(int index)
 {
-    IOUSBCompletion complete;
+    IOUSBHostCompletion complete;
     IOReturn err;
     WGRREAD *data = (WGRREAD*)IOMalloc(sizeof(WGRREAD));
-
+    
     if (data == NULL)
         return false;
     data->index = index;
@@ -261,38 +287,38 @@ bool WirelessGamingReceiver::QueueRead(int index)
         IOFree(data, sizeof(WGRREAD));
         return false;
     }
-
-    complete.target = this;
+    
+    complete.owner = this;
     complete.action = _ReadComplete;
     complete.parameter = data;
-
-    err = connections[index].controllerIn->Read(data->buffer, 0, 0, data->buffer->getLength(), &complete);
+    
+    err = connections[index].controllerIn->io(data->buffer, (uint32_t)data->buffer->getLength(), &complete);
     if (err == kIOReturnSuccess)
         return true;
-
+    
     data->buffer->release();
     IOFree(data, sizeof(WGRREAD));
-
+    
     // IOLog("read - failed to start (0x%.8x)\n", err);
     return false;
 }
 
 // Handle a completed read on a controller
-void WirelessGamingReceiver::ReadComplete(void *parameter, IOReturn status, UInt32 bufferSizeRemaining)
+void WirelessGamingReceiver::ReadComplete(void *parameter, IOReturn status, UInt32 bytesTransferred)
 {
     WGRREAD *data = (WGRREAD*)parameter;
     bool reread = true;
-
+    
     switch (status)
     {
         case kIOReturnOverrun:
             // IOLog("read - kIOReturnOverrun, clearing stall\n");
-            connections[data->index].controllerIn->ClearStall();
+            connections[data->index].controllerIn->clearStall(false);
             // fall through
         case kIOReturnSuccess:
-            ProcessMessage(data->index, (unsigned char*)data->buffer->getBytesNoCopy(), (int)data->buffer->getLength() - bufferSizeRemaining);
+            ProcessMessage(data->index, (unsigned char*)data->buffer->getBytesNoCopy(), bytesTransferred);
             break;
-
+            
         case kIOReturnNotResponding:
             // IOLog("read - kIOReturnNotResponding\n");
             // fall through
@@ -300,11 +326,11 @@ void WirelessGamingReceiver::ReadComplete(void *parameter, IOReturn status, UInt
             reread = false;
             break;
     }
-
+    
     int newIndex = data->index;
     data->buffer->release();
     IOFree(data, sizeof(WGRREAD));
-
+    
     if (reread)
         QueueRead(newIndex);
 }
@@ -313,9 +339,9 @@ void WirelessGamingReceiver::ReadComplete(void *parameter, IOReturn status, UInt
 bool WirelessGamingReceiver::QueueWrite(int index, const void *bytes, UInt32 length)
 {
     IOBufferMemoryDescriptor *outBuffer;
-    IOUSBCompletion complete;
+    IOUSBHostCompletion complete;
     IOReturn err;
-
+    
     outBuffer = IOBufferMemoryDescriptor::inTaskWithOptions(kernel_task, 0, length);
     if (outBuffer == NULL)
     {
@@ -323,12 +349,12 @@ bool WirelessGamingReceiver::QueueWrite(int index, const void *bytes, UInt32 len
         return false;
     }
     outBuffer->writeBytes(0, bytes, length);
-
-    complete.target = this;
+    
+    complete.owner = this;
     complete.action = _WriteComplete;
     complete.parameter = outBuffer;
-
-    err = connections[index].controllerOut->Write(outBuffer, 0, 0, length, &complete);
+    
+    err = connections[index].controllerOut->io(outBuffer, length, &complete);
     if (err == kIOReturnSuccess)
         return true;
     else
@@ -339,7 +365,7 @@ bool WirelessGamingReceiver::QueueWrite(int index, const void *bytes, UInt32 len
 }
 
 // Handle a completed write on a controller
-void WirelessGamingReceiver::WriteComplete(void *parameter,IOReturn status,UInt32 bufferSizeRemaining)
+void WirelessGamingReceiver::WriteComplete(void *parameter,IOReturn status,UInt32 bytesTransferred)
 {
     IOMemoryDescriptor *memory=(IOMemoryDescriptor*)parameter;
     if(status!=kIOReturnSuccess) {
@@ -362,13 +388,13 @@ void WirelessGamingReceiver::ReleaseAll(void)
         }
         if (connections[i].controllerIn != NULL)
         {
-            connections[i].controllerIn->Abort();
+            connections[i].controllerIn->abort();
             connections[i].controllerIn->release();
             connections[i].controllerIn = NULL;
         }
         if (connections[i].controllerOut != NULL)
         {
-            connections[i].controllerOut->Abort();
+            connections[i].controllerOut->abort();
             connections[i].controllerOut->release();
             connections[i].controllerOut = NULL;
         }
@@ -379,13 +405,13 @@ void WirelessGamingReceiver::ReleaseAll(void)
         }
         if (connections[i].otherIn != NULL)
         {
-            connections[i].otherIn->Abort();
+            connections[i].otherIn->abort();
             connections[i].otherIn->release();
             connections[i].otherIn = NULL;
         }
         if (connections[i].otherOut != NULL)
         {
-            connections[i].otherOut->Abort();
+            connections[i].otherOut->abort();
             connections[i].otherOut->release();
             connections[i].otherOut = NULL;
         }
@@ -409,17 +435,17 @@ void WirelessGamingReceiver::ReleaseAll(void)
 }
 
 // Static wrapper for read notifications
-void WirelessGamingReceiver::_ReadComplete(void *target, void *parameter, IOReturn status, UInt32 bufferSizeRemaining)
+void WirelessGamingReceiver::_ReadComplete(void* owner, void* parameter, IOReturn status, uint32_t bytesTransferred)
 {
-    if (target != NULL)
-        ((WirelessGamingReceiver*)target)->ReadComplete(parameter, status, bufferSizeRemaining);
+    if (owner != NULL)
+        ((WirelessGamingReceiver*)owner)->ReadComplete(parameter, status, bytesTransferred);
 }
 
 // Static wrapper for write notifications
-void WirelessGamingReceiver::_WriteComplete(void *target, void *parameter, IOReturn status, UInt32 bufferSizeRemaining)
+void WirelessGamingReceiver::_WriteComplete(void* owner, void* parameter, IOReturn status, uint32_t bytesTransferred)
 {
-    if (target != NULL)
-        ((WirelessGamingReceiver*)target)->WriteComplete(parameter, status, bufferSizeRemaining);
+    if (owner != NULL)
+        ((WirelessGamingReceiver*)owner)->WriteComplete(parameter, status, bytesTransferred);
 }
 
 // Processes a message for a controller
@@ -428,7 +454,7 @@ void WirelessGamingReceiver::ProcessMessage(int index, const unsigned char *data
 #ifdef PROTOCOL_DEBUG
     char s[1024];
     int i;
-
+    
     for (i = 0; i < length; i++)
     {
         s[(i * 2) + 0] = "0123456789ABCDEF"[(data[i] & 0xF0) >> 4];
@@ -438,7 +464,7 @@ void WirelessGamingReceiver::ProcessMessage(int index, const unsigned char *data
     IOLog("Got data (%d, %d bytes): %s\n", index, length, s);
 #endif
     // Handle device connections
-    if ((length == 2) && (data[0] == 0x08))
+    if ((length >= 2) && (data[0] == 0x08))
     {
         if (data[1] == 0x00)
         {
@@ -469,7 +495,7 @@ void WirelessGamingReceiver::ProcessMessage(int index, const unsigned char *data
                 int i, j;
                 IOMemoryDescriptor *data;
                 char c;
-
+                
                 ready = false;
                 j = connections[index].inputArray->getCount();
                 for (i = 0; !ready && (i < j); i++)
@@ -492,7 +518,7 @@ void WirelessGamingReceiver::ProcessMessage(int index, const unsigned char *data
         }
         return;
     }
-
+    
     // Add anything else to the queue
     IOMemoryDescriptor *copy = IOBufferMemoryDescriptor::inTaskWithOptions(kernel_task, 0, length);
     copy->writeBytes(0, data, length);
@@ -505,7 +531,7 @@ void WirelessGamingReceiver::ProcessMessage(int index, const unsigned char *data
         if (!connections[index].controllerStarted)
         {
             char c;
-
+            
             copy->readBytes(1, &c, 1);
             if (c == 0x0f)
             {
@@ -562,7 +588,7 @@ bool WirelessGamingReceiver::IsDataQueued(int index)
 IOMemoryDescriptor* WirelessGamingReceiver::ReadBuffer(int index)
 {
     IOMemoryDescriptor *data;
-
+    
     data = OSDynamicCast(IOMemoryDescriptor, connections[index].inputArray->getObject(0));
     if (data != NULL)
         data->retain();
@@ -575,7 +601,7 @@ OSNumber* WirelessGamingReceiver::newLocationIDNumber() const
 {
     OSNumber *number;
     UInt32    location = 0;
-
+    
     if (device)
     {
         if ((number = OSDynamicCast(OSNumber, device->getProperty("locationID"))))
@@ -587,11 +613,11 @@ OSNumber* WirelessGamingReceiver::newLocationIDNumber() const
             // Make up an address
             if ((number = OSDynamicCast(OSNumber, device->getProperty("USB Address"))))
                 location |= number->unsigned8BitValue() << 24;
-
+            
             if ((number = OSDynamicCast(OSNumber, device->getProperty("idProduct"))))
                 location |= number->unsigned8BitValue() << 16;
         }
     }
-
+    
     return OSNumber::withNumber(location, 32);
 }

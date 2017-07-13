@@ -97,7 +97,6 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
 
 
 -(void)awakeFromNib {
-    [_aboutPopover setAppearance:NSPopoverAppearanceHUD];
     [_rumbleOptions removeAllItems];
     [_rumbleOptions addItemsWithTitles:@[@"Default", @"None"]];
 }
@@ -845,7 +844,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
         IOObjectRelease(object);
 
     // TEMP: Enable the "enable driver" checkbox if the kext is loaded in the memory
-    int result = system("kextstat | grep com.mice.driver.Xbox360Controller");
+    int result = system("kextstat | grep com.mice.driver.360Controller");
 //    NSLog(@"Result of kextstat = %d", result);
     if (result == 0) {
         [self.enableDriverCheckBox setState:NSOnState];

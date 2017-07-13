@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.mice.driver.Xbox360Controller</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -20,46 +20,6 @@
 	<string>${CURRENT_PROJECT_VERSION}</string>
 	<key>IOKitPersonalities</key>
 	<dict>
-		<key>AplayController</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.mice.driver.Xbox360Controller</string>
-			<key>IOCFPlugInTypes</key>
-			<dict>
-				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
-				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
-			</dict>
-			<key>IOClass</key>
-			<string>Xbox360Peripheral</string>
-			<key>IOKitDebug</key>
-			<integer>65535</integer>
-			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
-			<key>idProduct</key>
-			<integer>64251</integer>
-			<key>idVendor</key>
-			<integer>9414</integer>
-		</dict>
-		<key>AfterglowGamepadForXbox360</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.mice.driver.Xbox360Controller</string>
-			<key>IOCFPlugInTypes</key>
-			<dict>
-				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
-				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
-			</dict>
-			<key>IOClass</key>
-			<string>Xbox360Peripheral</string>
-			<key>IOKitDebug</key>
-			<integer>65535</integer>
-			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
-			<key>idProduct</key>
-			<integer>1043</integer>
-			<key>idVendor</key>
-			<integer>3695</integer>
-		</dict>
 		<key>AfterglowGamepad1</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
@@ -74,7 +34,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>64252</integer>
 			<key>idVendor</key>
@@ -94,7 +54,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>63751</integer>
 			<key>idVendor</key>
@@ -114,7 +74,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>64253</integer>
 			<key>idVendor</key>
@@ -134,11 +94,31 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>742</integer>
 			<key>idVendor</key>
 			<integer>1118</integer>
+		</dict>
+		<key>AfterglowGamepadForXbox360</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBHostDevice</string>
+			<key>idProduct</key>
+			<integer>1043</integer>
+			<key>idVendor</key>
+			<integer>3695</integer>
 		</dict>
 		<key>AfterglowPrismaticOne</key>
 		<dict>
@@ -154,11 +134,31 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>313</integer>
 			<key>idVendor</key>
 			<integer>3695</integer>
+		</dict>
+		<key>AplayController</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBHostDevice</string>
+			<key>idProduct</key>
+			<integer>64251</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
 		</dict>
 		<key>ArcadeGameStick</key>
 		<dict>
@@ -174,7 +174,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>18264</integer>
 			<key>idVendor</key>
@@ -194,7 +194,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21766</integer>
 			<key>idVendor</key>
@@ -214,7 +214,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>16144</integer>
 			<key>idVendor</key>
@@ -234,7 +234,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>1537</integer>
 			<key>idVendor</key>
@@ -265,7 +265,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>65535</integer>
 			<key>idVendor</key>
@@ -285,7 +285,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>654</integer>
 			<key>idVendor</key>
@@ -305,7 +305,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>655</integer>
 			<key>idVendor</key>
@@ -325,7 +325,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>307</integer>
 			<key>idVendor</key>
@@ -345,7 +345,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>63233</integer>
 			<key>idVendor</key>
@@ -365,7 +365,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>672</integer>
 			<key>idVendor</key>
@@ -385,7 +385,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>62721</integer>
 			<key>idVendor</key>
@@ -405,31 +405,11 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>10</integer>
 			<key>idVendor</key>
 			<integer>3853</integer>
-		</dict>
-		<key>FUSIONXboxOne</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.mice.driver.Xbox360Controller</string>
-			<key>IOCFPlugInTypes</key>
-			<dict>
-				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
-				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
-			</dict>
-			<key>IOClass</key>
-			<string>Xbox360Peripheral</string>
-			<key>IOKitDebug</key>
-			<integer>65535</integer>
-			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
-			<key>idProduct</key>
-			<integer>22042</integer>
-			<key>idVendor</key>
-			<integer>9414</integer>
 		</dict>
 		<key>FUSIONProXboxOne</key>
 		<dict>
@@ -445,9 +425,29 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21786</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
+		</dict>
+		<key>FUSIONXboxOne</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBHostDevice</string>
+			<key>idProduct</key>
+			<integer>22042</integer>
 			<key>idVendor</key>
 			<integer>9414</integer>
 		</dict>
@@ -465,7 +465,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21773</integer>
 			<key>idVendor</key>
@@ -485,7 +485,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>1025</integer>
 			<key>idVendor</key>
@@ -505,7 +505,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>769</integer>
 			<key>idVendor</key>
@@ -525,7 +525,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>770</integer>
 			<key>idVendor</key>
@@ -545,7 +545,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>63745</integer>
 			<key>idVendor</key>
@@ -565,7 +565,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>62209</integer>
 			<key>idVendor</key>
@@ -585,11 +585,31 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>18248</integer>
 			<key>idVendor</key>
 			<integer>5168</integer>
+		</dict>
+		<key>HORI Real Arcade Pro.EX Premium VLX</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBHostDevice</string>
+			<key>idProduct</key>
+			<integer>62726</integer>
+			<key>idVendor</key>
+			<integer>7085</integer>
 		</dict>
 		<key>HoriEX2</key>
 		<dict>
@@ -605,7 +625,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>13</integer>
 			<key>idVendor</key>
@@ -625,7 +645,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>62723</integer>
 			<key>idVendor</key>
@@ -645,7 +665,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21762</integer>
 			<key>idVendor</key>
@@ -665,7 +685,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>10</integer>
 			<key>idVendor</key>
@@ -685,7 +705,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>62725</integer>
 			<key>idVendor</key>
@@ -705,7 +725,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>13</integer>
 			<key>idVendor</key>
@@ -725,7 +745,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>62721</integer>
 			<key>idVendor</key>
@@ -745,7 +765,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21760</integer>
 			<key>idVendor</key>
@@ -765,7 +785,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>12</integer>
 			<key>idVendor</key>
@@ -785,7 +805,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>103</integer>
 			<key>idVendor</key>
@@ -805,7 +825,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>144</integer>
 			<key>idVendor</key>
@@ -825,7 +845,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>99</integer>
 			<key>idVendor</key>
@@ -845,7 +865,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21774</integer>
 			<key>idVendor</key>
@@ -865,7 +885,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>120</integer>
 			<key>idVendor</key>
@@ -885,7 +905,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>27</integer>
 			<key>idVendor</key>
@@ -905,7 +925,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>62722</integer>
 			<key>idVendor</key>
@@ -925,7 +945,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21760</integer>
 			<key>idVendor</key>
@@ -945,7 +965,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>654</integer>
 			<key>idVendor</key>
@@ -965,7 +985,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>64001</integer>
 			<key>idVendor</key>
@@ -985,7 +1005,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>304</integer>
 			<key>idVendor</key>
@@ -1005,7 +1025,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>48879</integer>
 			<key>idVendor</key>
@@ -1025,7 +1045,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>4</integer>
 			<key>idVendor</key>
@@ -1045,7 +1065,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>49730</integer>
 			<key>idVendor</key>
@@ -1065,7 +1085,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>51875</integer>
 			<key>idVendor</key>
@@ -1085,7 +1105,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>49693</integer>
 			<key>idVendor</key>
@@ -1105,7 +1125,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>49694</integer>
 			<key>idVendor</key>
@@ -1125,7 +1145,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>49695</integer>
 			<key>idVendor</key>
@@ -1145,11 +1165,31 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>49761</integer>
 			<key>idVendor</key>
 			<integer>1133</integer>
+		</dict>
+		<key>MKKlassicFightStick</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBHostDevice</string>
+			<key>idProduct</key>
+			<integer>771</integer>
+			<key>idVendor</key>
+			<integer>4779</integer>
 		</dict>
 		<key>MLGGamePadforXbox360</key>
 		<dict>
@@ -1165,7 +1205,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61475</integer>
 			<key>idVendor</key>
@@ -1185,7 +1225,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61497</integer>
 			<key>idVendor</key>
@@ -1205,7 +1245,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>46904</integer>
 			<key>idVendor</key>
@@ -1225,7 +1265,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61465</integer>
 			<key>idVendor</key>
@@ -1245,7 +1285,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61477</integer>
 			<key>idVendor</key>
@@ -1265,7 +1305,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61479</integer>
 			<key>idVendor</key>
@@ -1285,7 +1325,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61486</integer>
 			<key>idVendor</key>
@@ -1305,7 +1345,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61498</integer>
 			<key>idVendor</key>
@@ -1325,7 +1365,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61503</integer>
 			<key>idVendor</key>
@@ -1345,7 +1385,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61568</integer>
 			<key>idVendor</key>
@@ -1365,29 +1405,9 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61506</integer>
-			<key>idVendor</key>
-			<integer>7085</integer>
-		</dict>
-		<key>MadCatzMLGFightStickTE</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.mice.driver.Xbox360Controller</string>
-			<key>IOCFPlugInTypes</key>
-			<dict>
-				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
-				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
-			</dict>
-			<key>IOClass</key>
-			<string>Xbox360Peripheral</string>
-			<key>IOKitDebug</key>
-			<integer>65535</integer>
-			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
-			<key>idProduct</key>
-			<integer>61502</integer>
 			<key>idVendor</key>
 			<integer>7085</integer>
 		</dict>
@@ -1405,7 +1425,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>18198</integer>
 			<key>idVendor</key>
@@ -1425,7 +1445,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>63746</integer>
 			<key>idVendor</key>
@@ -1445,9 +1465,29 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61642</integer>
+			<key>idVendor</key>
+			<integer>7085</integer>
+		</dict>
+		<key>MadCatzMLGFightStickTE</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBHostDevice</string>
+			<key>idProduct</key>
+			<integer>61502</integer>
 			<key>idVendor</key>
 			<integer>7085</integer>
 		</dict>
@@ -1465,7 +1505,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>18230</integer>
 			<key>idVendor</key>
@@ -1485,7 +1525,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>18230</integer>
 			<key>idVendor</key>
@@ -1505,7 +1545,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61462</integer>
 			<key>idVendor</key>
@@ -1525,7 +1565,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>39025</integer>
 			<key>idVendor</key>
@@ -1545,7 +1585,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>18214</integer>
 			<key>idVendor</key>
@@ -1565,7 +1605,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>672</integer>
 			<key>idVendor</key>
@@ -1585,7 +1625,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>649</integer>
 			<key>idVendor</key>
@@ -1605,7 +1645,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>648</integer>
 			<key>idVendor</key>
@@ -1625,7 +1665,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>645</integer>
 			<key>idVendor</key>
@@ -1645,7 +1685,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>514</integer>
 			<key>idVendor</key>
@@ -1665,7 +1705,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>647</integer>
 			<key>idVendor</key>
@@ -1685,7 +1725,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>648</integer>
 			<key>idVendor</key>
@@ -1705,7 +1745,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>721</integer>
 			<key>idVendor</key>
@@ -1725,7 +1765,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>733</integer>
 			<key>idVendor</key>
@@ -1745,7 +1785,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>746</integer>
 			<key>idVendor</key>
@@ -1765,31 +1805,11 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>739</integer>
 			<key>idVendor</key>
 			<integer>1118</integer>
-		</dict>
-		<key>MKKlassicFightStick</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.mice.driver.Xbox360Controller</string>
-			<key>IOCFPlugInTypes</key>
-			<dict>
-				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
-				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
-			</dict>
-			<key>IOClass</key>
-			<string>Xbox360Peripheral</string>
-			<key>IOKitDebug</key>
-			<integer>65535</integer>
-			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
-			<key>idProduct</key>
-			<integer>771</integer>
-			<key>idVendor</key>
-			<integer>4779</integer>
 		</dict>
 		<key>NaconGC100XF</key>
 		<dict>
@@ -1805,7 +1825,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>22000</integer>
 			<key>idVendor</key>
@@ -1825,31 +1845,11 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>63744</integer>
 			<key>idVendor</key>
 			<integer>7085</integer>
-		</dict>
-		<key>PDPAfterglowAX1</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.mice.driver.Xbox360Controller</string>
-			<key>IOCFPlugInTypes</key>
-			<dict>
-				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
-				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
-			</dict>
-			<key>IOClass</key>
-			<string>Xbox360Peripheral</string>
-			<key>IOKitDebug</key>
-			<integer>65535</integer>
-			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
-			<key>idProduct</key>
-			<integer>275</integer>
-			<key>idVendor</key>
-			<integer>3695</integer>
 		</dict>
 		<key>PDPAfterglowAX.1</key>
 		<dict>
@@ -1865,9 +1865,29 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>63744</integer>
+			<key>idVendor</key>
+			<integer>3695</integer>
+		</dict>
+		<key>PDPAfterglowAX1</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBHostDevice</string>
+			<key>idProduct</key>
+			<integer>275</integer>
 			<key>idVendor</key>
 			<integer>3695</integer>
 		</dict>
@@ -1885,7 +1905,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>531</integer>
 			<key>idVendor</key>
@@ -1905,7 +1925,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>769</integer>
 			<key>idVendor</key>
@@ -1925,7 +1945,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>356</integer>
 			<key>idVendor</key>
@@ -1945,7 +1965,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>305</integer>
 			<key>idVendor</key>
@@ -1965,9 +1985,29 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>327</integer>
+			<key>idVendor</key>
+			<integer>3695</integer>
+		</dict>
+		<key>PDPTitanfall2</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBHostDevice</string>
+			<key>idProduct</key>
+			<integer>357</integer>
 			<key>idVendor</key>
 			<integer>3695</integer>
 		</dict>
@@ -1985,31 +2025,11 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>63747</integer>
 			<key>idVendor</key>
 			<integer>7085</integer>
-		</dict>
-		<key>PDPTitanfall2</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.mice.driver.Xbox360Controller</string>
-			<key>IOCFPlugInTypes</key>
-			<dict>
-				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
-				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
-			</dict>
-			<key>IOClass</key>
-			<string>Xbox360Peripheral</string>
-			<key>IOKitDebug</key>
-			<integer>65535</integer>
-			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
-			<key>idProduct</key>
-			<integer>357</integer>
-			<key>idVendor</key>
-			<integer>3695</integer>
 		</dict>
 		<key>PDPVersusPad</key>
 		<dict>
@@ -2025,7 +2045,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>63748</integer>
 			<key>idVendor</key>
@@ -2045,7 +2065,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>1281</integer>
 			<key>idVendor</key>
@@ -2065,7 +2085,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>314</integer>
 			<key>idVendor</key>
@@ -2085,7 +2105,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>354</integer>
 			<key>idVendor</key>
@@ -2105,7 +2125,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>22042</integer>
 			<key>idVendor</key>
@@ -2125,7 +2145,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>353</integer>
 			<key>idVendor</key>
@@ -2145,7 +2165,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>355</integer>
 			<key>idVendor</key>
@@ -2165,7 +2185,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>348</integer>
 			<key>idVendor</key>
@@ -2185,7 +2205,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>16138</integer>
 			<key>idVendor</key>
@@ -2205,7 +2225,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21399</integer>
 			<key>idVendor</key>
@@ -2225,7 +2245,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>16128</integer>
 			<key>idVendor</key>
@@ -2245,7 +2265,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21274</integer>
 			<key>idVendor</key>
@@ -2265,7 +2285,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21248</integer>
 			<key>idVendor</key>
@@ -2285,7 +2305,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21530</integer>
 			<key>idVendor</key>
@@ -2305,7 +2325,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21562</integer>
 			<key>idVendor</key>
@@ -2325,7 +2345,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21546</integer>
 			<key>idVendor</key>
@@ -2345,7 +2365,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>48879</integer>
 			<key>idVendor</key>
@@ -2365,7 +2385,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>22</integer>
 			<key>idVendor</key>
@@ -2385,29 +2405,9 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>62724</integer>
-			<key>idVendor</key>
-			<integer>7085</integer>
-		</dict>
-		<key>HORI Real Arcade Pro.EX Premium VLX</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.mice.driver.Xbox360Controller</string>
-			<key>IOCFPlugInTypes</key>
-			<dict>
-				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
-				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
-			</dict>
-			<key>IOClass</key>
-			<string>Xbox360Peripheral</string>
-			<key>IOKitDebug</key>
-			<integer>65535</integer>
-			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
-			<key>idProduct</key>
-			<integer>62726</integer>
 			<key>idVendor</key>
 			<integer>7085</integer>
 		</dict>
@@ -2425,7 +2425,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>2560</integer>
 			<key>idVendor</key>
@@ -2445,7 +2445,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>20480</integer>
 			<key>idVendor</key>
@@ -2465,7 +2465,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>64769</integer>
 			<key>idVendor</key>
@@ -2485,7 +2485,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>64769</integer>
 			<key>idVendor</key>
@@ -2505,7 +2505,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>64768</integer>
 			<key>idVendor</key>
@@ -2525,7 +2525,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>64768</integer>
 			<key>idVendor</key>
@@ -2545,7 +2545,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>65024</integer>
 			<key>idVendor</key>
@@ -2565,7 +2565,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>23812</integer>
 			<key>idVendor</key>
@@ -2585,7 +2585,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>2563</integer>
 			<key>idVendor</key>
@@ -2605,7 +2605,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>63489</integer>
 			<key>idVendor</key>
@@ -2625,7 +2625,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>672</integer>
 			<key>idVendor</key>
@@ -2645,7 +2645,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>3</integer>
 			<key>idVendor</key>
@@ -2665,7 +2665,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>2</integer>
 			<key>idVendor</key>
@@ -2685,7 +2685,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>287</integer>
 			<key>idVendor</key>
@@ -2705,7 +2705,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>543</integer>
 			<key>idVendor</key>
@@ -2725,7 +2725,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>64254</integer>
 			<key>idVendor</key>
@@ -2745,7 +2745,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>326</integer>
 			<key>idVendor</key>
@@ -2765,7 +2765,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>582</integer>
 			<key>idVendor</key>
@@ -2785,7 +2785,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>838</integer>
 			<key>idVendor</key>
@@ -2805,7 +2805,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>13</integer>
 			<key>idVendor</key>
@@ -2825,7 +2825,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61480</integer>
 			<key>idVendor</key>
@@ -2845,7 +2845,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>18216</integer>
 			<key>idVendor</key>
@@ -2865,7 +2865,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>18200</integer>
 			<key>idVendor</key>
@@ -2885,7 +2885,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>18232</integer>
 			<key>idVendor</key>
@@ -2905,7 +2905,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61496</integer>
 			<key>idVendor</key>
@@ -2925,7 +2925,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>63288</integer>
 			<key>idVendor</key>
@@ -2945,7 +2945,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>61501</integer>
 			<key>idVendor</key>
@@ -2965,7 +2965,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>52009</integer>
 			<key>idVendor</key>
@@ -2985,7 +2985,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>51970</integer>
 			<key>idVendor</key>
@@ -3005,31 +3005,11 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>1</integer>
 			<key>idVendor</key>
 			<integer>5769</integer>
-		</dict>
-		<key>TrustPredator</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.mice.driver.Xbox360Controller</string>
-			<key>IOCFPlugInTypes</key>
-			<dict>
-				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
-				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
-			</dict>
-			<key>IOClass</key>
-			<string>Xbox360Peripheral</string>
-			<key>IOKitDebug</key>
-			<integer>65535</integer>
-			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
-			<key>idProduct</key>
-			<integer>3</integer>
-			<key>idVendor</key>
-			<integer>2064</integer>
 		</dict>
 		<key>TSZPelican</key>
 		<dict>
@@ -3045,7 +3025,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>513</integer>
 			<key>idVendor</key>
@@ -3065,7 +3045,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>23296</integer>
 			<key>idVendor</key>
@@ -3085,7 +3065,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>23299</integer>
 			<key>idVendor</key>
@@ -3105,7 +3085,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>45862</integer>
 			<key>idVendor</key>
@@ -3125,11 +3105,31 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>23298</integer>
 			<key>idVendor</key>
 			<integer>9414</integer>
+		</dict>
+		<key>TrustPredator</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBHostDevice</string>
+			<key>idProduct</key>
+			<integer>3</integer>
+			<key>idVendor</key>
+			<integer>2064</integer>
 		</dict>
 		<key>XB360MortalKombatFightStick</key>
 		<dict>
@@ -3145,7 +3145,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>63750</integer>
 			<key>idVendor</key>
@@ -3165,7 +3165,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21258</integer>
 			<key>idVendor</key>
@@ -3185,7 +3185,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 			<key>idProduct</key>
 			<integer>21562</integer>
 			<key>idVendor</key>
@@ -3197,15 +3197,15 @@
 	<key>OSBundleLibraries</key>
 	<dict>
 		<key>com.apple.iokit.IOHIDFamily</key>
-		<string>1.2</string>
-		<key>com.apple.iokit.IOUSBFamily</key>
-		<string>1.8</string>
+		<string>2.0</string>
+		<key>com.apple.iokit.IOUSBHostFamily</key>
+		<string>1.1</string>
 		<key>com.apple.kpi.iokit</key>
-		<string>8.0.0</string>
+		<string>16.6</string>
 		<key>com.apple.kpi.libkern</key>
-		<string>8.0.0</string>
+		<string>16.6</string>
 		<key>com.apple.kpi.mach</key>
-		<string>8.0.0</string>
+		<string>16.6</string>
 	</dict>
 </dict>
 </plist>
