@@ -870,39 +870,42 @@
 		55B636AC18C104DB00CE933D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = GitHub;
 				TargetAttributes = {
 					55B636B318C104DB00CE933D = {
-						DevelopmentTeam = 2TT2ZVYWWA;
+						DevelopmentTeam = 7SQZL2Q9TC;
 						ProvisioningStyle = Automatic;
 					};
 					55B6370618C1057100CE933D = {
-						DevelopmentTeam = 2TT2ZVYWWA;
+						DevelopmentTeam = 7SQZL2Q9TC;
 						ProvisioningStyle = Automatic;
 					};
 					55B6371E18C108A500CE933D = {
-						DevelopmentTeam = 2TT2ZVYWWA;
+						DevelopmentTeam = 7SQZL2Q9TC;
 						ProvisioningStyle = Automatic;
 					};
 					55B6375F18C10A3200CE933D = {
-						DevelopmentTeam = 2TT2ZVYWWA;
+						DevelopmentTeam = 7SQZL2Q9TC;
 						ProvisioningStyle = Automatic;
 					};
 					55B6377C18C10B0B00CE933D = {
-						DevelopmentTeam = 2TT2ZVYWWA;
+						DevelopmentTeam = 7SQZL2Q9TC;
 						ProvisioningStyle = Automatic;
 					};
 					55B637E718C10D5000CE933D = {
-						DevelopmentTeam = 2TT2ZVYWWA;
+						DevelopmentTeam = 7SQZL2Q9TC;
 						ProvisioningStyle = Automatic;
 					};
 					55B6380D18C10E8700CE933D = {
-						DevelopmentTeam = 2TT2ZVYWWA;
+						DevelopmentTeam = 7SQZL2Q9TC;
 						ProvisioningStyle = Automatic;
 					};
+					55B6383818C10F8E00CE933D = {
+						DevelopmentTeam = 7SQZL2Q9TC;
+					};
 					55FE3CA018D7B77800D69E84 = {
-						DevelopmentTeam = 2TT2ZVYWWA;
+						DevelopmentTeam = 7SQZL2Q9TC;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1208,14 +1211,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1263,14 +1272,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1306,7 +1321,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "360Daemon/360DaemonApp-Prefix.pch";
 				INFOPLIST_FILE = "360Daemon/360DaemonApp-Info.plist";
@@ -1323,7 +1338,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "360Daemon/360DaemonApp-Prefix.pch";
 				INFOPLIST_FILE = "360Daemon/360DaemonApp-Info.plist";
@@ -1339,7 +1354,7 @@
 			buildSettings = {
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				INFOPLIST_FILE = 360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Xbox360Controller;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
@@ -1354,7 +1369,7 @@
 			buildSettings = {
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				INFOPLIST_FILE = 360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Xbox360Controller;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
@@ -1369,7 +1384,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				EXPORTED_SYMBOLS_FILE = Feedback360/Feedback360.exp;
 				INFOPLIST_FILE = Feedback360/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1386,7 +1401,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				EXPORTED_SYMBOLS_FILE = Feedback360/Feedback360.exp;
 				INFOPLIST_FILE = Feedback360/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1402,7 +1417,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DriverTool/DriverTool_Prefix.pch;
 				INFOPLIST_FILE = DriverTool/Info.plist;
@@ -1419,7 +1434,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DriverTool/DriverTool_Prefix.pch;
 				INFOPLIST_FILE = DriverTool/Info.plist;
@@ -1436,7 +1451,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEPLOYMENT_LOCATION = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				DSTROOT = /;
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1460,7 +1475,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEAD_CODE_STRIPPING = YES;
 				DEPLOYMENT_LOCATION = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				DSTROOT = /;
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1482,7 +1497,7 @@
 			buildSettings = {
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				INFOPLIST_FILE = Wireless360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Wireless360Controller;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
@@ -1497,7 +1512,7 @@
 			buildSettings = {
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				INFOPLIST_FILE = Wireless360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Wireless360Controller;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
@@ -1512,7 +1527,7 @@
 			buildSettings = {
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				INFOPLIST_FILE = WirelessGamingReceiver/Info.plist;
 				MODULE_NAME = com.mice.driver.WirelessGamingReceiver;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
@@ -1527,7 +1542,7 @@
 			buildSettings = {
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				INFOPLIST_FILE = WirelessGamingReceiver/Info.plist;
 				MODULE_NAME = com.mice.driver.WirelessGamingReceiver;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
@@ -1540,7 +1555,8 @@
 		55B6383A18C10F8E00CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Mac Developer: Paul Schaap (SG3BF6458H)";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1548,7 +1564,8 @@
 		55B6383B18C10F8E00CE933D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Mac Developer: Paul Schaap (SG3BF6458H)";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1556,8 +1573,8 @@
 		55FE3CA818D7B77800D69E84 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: Paul Schaap (SG3BF6458H)";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
@@ -1571,8 +1588,8 @@
 		55FE3CA918D7B77800D69E84 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: Paul Schaap (SG3BF6458H)";
+				DEVELOPMENT_TEAM = 7SQZL2Q9TC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
